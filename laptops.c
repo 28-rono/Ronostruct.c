@@ -1,50 +1,90 @@
 #include <stdio.h>
 #include "electronics.h"
-
-void inputLaptops (struct Laptops laptops){
-
-	printf ("Enter company title: ");
-	scanf ("%s", company.title);
-
-	printf ("Enter country: ");
-	scanf ("%s", company.country);
-
-	printf ("Enter year company was founded: ");
-	scanf("%d",company.yearFounded);
-
-	printf ("Enter manufacturer name: ");
-	scanf ("%s", company->manuf.name);
-
-	printf ("Enter manufacurer's age: ");
-	scanf ("%d",  company->manuf.age);
-
-	printf ("Enter laptop type: ");
-	scanf ("%s",  manufacturer->deta.type);
-
-
-	printf ("Enter laptop's storage capacity: ");
-	scanf ("%d", manufacturer->deta.storage);
-
-	printf ("Enter laptop's year of manufacture: ");
-	scanf ("%d", manufacturer->deta.yearManufactured);
-
-	printf ("Enter laptops price: ");
-	scanf ("%d", manufacturer->deta.price);
-
+#include "structures.h"
+#include<string.h>
+void details(void)
+{	struct Details data;
+	int num=0;
+	printf("ENTER a number to see the laptop details\n\t\t1.HP\n\t\t2.LENOVO\n\t\t3.DELL\n\t\t4.ASUS[NB : No should be between 1 and 4]");
+ 	scanf("%d",&num);
+switch(num)
+	{
+	case 1:
+	strcpy(data.type,"HP");
+	data.storage=500;
+	data.yearManufactured=2018;
+	data.price=30000;
+	break;
+	case 2:
+	strcpy(data.type,"LENOVO");
+	data.storage=500;
+	data.yearManufactured=2017;
+	data.price=29500;
+	break;
+	case 3 :
+	strcpy(data.type,"DELL");
+	data.storage=256;
+	data.yearManufactured=2016;
+	data.price=25500;
+	break;
+	case 4:
+	strcpy(data.type,"ASUS");
+	data.storage=500;
+	data.yearManufactured=2018;
+	data.price=27000;
+	break;
+	default :
+	printf("INVALID CHOICE");
+	}
+	printf("Laptop Type : %s\nStorage : %d GB\nYear Manufactured : %d\nPrice : %d\n",data.type,data.storage,data.yearManufactured,data.price);
 }
-
-void displayMovies (Movie movies){
-
-	printf ("Company Title: %s\n", company.title);
-	printf ("Company location: %s\n", company.country);
-    printf ("Company year founded: %d\n",  company.yearFounded);
-    printf ("Manufacturer name: %s", company->manuf.name);
-    printf ("Manufacturer age: %d\n", company->manuf.age);
-    printf ("Laptop type: %s\n", manufacturer->deta.type);
-    printf ("Storage: %d\n", manufacturer->deta.storage);
-    printf ("Laptop year manufactured: %d\n", manufacturer->deta.yearManufacured);
-    printf ("Laptop price: %d\n", manufacturer->deta.price);
-
-
+void Welcome(char name[])
+{	int num;
+	printf("HELLO %s WELCOME TO DAN LAPTOP SHOP\nTO SEE LAPTOPS DETAILS : PRESS 1\nTO SEE MANUFACTURER DETAILS : PRESS 2",name);
+	scanf("%d",&num);
+	if(num==1)
+	{
+	details();
+	}
+	else if(num==2){
+	manufacturer();
+	}
+	else {printf("\nINVALID CHOICE");}
+}
+void manufacturer(void)
+{	int num=0;
+	printf("\nENTER a number to see the laptop manufucturer details : \n\t\t1.HP\n\t\t2.LENOVO\n\t\t3.DELL\n\t\t4.ASUS[NB : No should be between 1 and 4]");
+ 	scanf("%d",&num);
+	struct Manufacturer company;
+	switch(num){
+	case 1:
+	strcpy(company.name,"HP");
+	strcpy(company.area.country,"USA");
+	strcpy(company.area.city,"WASHINGTON DC");
+	
+	break;
+	case 2:
+	strcpy(company.name,"XIAOMI Inc");
+	strcpy(company.area.country,"CHINA");
+	strcpy(company.area.city,"BEIJING");
+	
+	
+	break;
+	case 3:
+	strcpy(company.name,"DELL MANUFACTURERS");
+	strcpy(company.area.country,"USA");
+	strcpy(company.area.city,"NEWYORK");
+	
+	break;
+	case 4:
+	strcpy(company.name,"IBM");
+	strcpy(company.area.country,"UK");
+	strcpy(company.area.city,"LONDON");
+	
+	break;
+	default:
+	printf("an error has occurred");
+	}
+printf("MANUFACTURER NAME : %s\nLOCATION :\n\t\tCOUNTRY : %s\n\t\tCITY : %s\n",company.name,company.area.country,company.area.city);
 
 }

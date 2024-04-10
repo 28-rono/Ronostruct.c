@@ -1,18 +1,11 @@
 #include <stdio.h>
 #include "electronics.h"
-
+#include "structures.h"
+char name[30];
 int main(){
- struct Laptop laptops[10];
-
-for (int i=0; i<10; i++){
- 	printf ("Input details for laptops %d: \n", i+1);
- 	inputLaptops (laptops [i]);
- }
-
- 
-for (int i=0;i<10; i++){
- 	printf ("Details of laptops %d: \n", i+1);
- 	displayLaptops (laptops[i]);
-
-return 0:
+	
+	printf("enter your name to proceed : \n");
+	scanf("%s",name);
+ 	Welcome(name);
+return 0;
 }
